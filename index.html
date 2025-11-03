@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بيانات العملاء</title>
+<style>
+body {
+  background-color: #0c0f0f;
+  color: #fff;
+  font-family: "Tajawal", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: #111;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #00ffbb;
+  width: 90%;
+  max-width: 340px;
+  text-align: center;
+  transition: box-shadow 0.4s ease;
+}
+
+h2 {
+  color: #00ffbb;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+input {
+  background: #222;
+  color: #ccc;
+  text-align: right;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+input::placeholder {
+  color: #777;
+}
+
+input:hover, input:focus {
+  box-shadow: 0 0 8px #00ffaa;
+  background: #1a1a1a;
+  outline: none;
+}
+
+button {
+  background: #00ffbb;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00ffaa;
+  transform: scale(1.02);
+}
+
+#msg {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #00ffaa;
+}
+
+/* 💫 تأثير بعد الإرسال الناجح */
+.success-glow {
+  box-shadow: 0 0 25px #00ffbb;
+}
+
+/* 📱 تحسين العرض على الجوال */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  input, button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container" id="box">
+  <h2>تسجيل بياناتك</h2>
+  <form id="clientForm">
+    <input type="text" name="name" placeholder="الاسم">
+    <input type="text" name="phone" placeholder="رقم الجوال">
+    <input type="text" name="job" placeholder="نبذة عنك أو تخصصك">
+    <input type="text" name="message" placeholder="اقتباس تحبه أو دعاء أو أي شيء">
+    <input type="url" name="facebook" placeholder="رابط Facebook">
+    <input type="url" name="instagram" placeholder="رابط Instagram">
+    <input type="url" name="whatsapp" placeholder="رابط WhatsApp">
+    <input type="url" name="telegram" placeholder="رابط Telegram">
+    <input type="url" name="tiktok" placeholder="رابط TikTok">
+    <input type="url" name="snapchat" placeholder="رابط Snapchat">
+    <input type="url" name="x" placeholder="رابط X">
+    <button type="submit">إرسال</button>
+  </form>
+  <p id="msg"></p>
+</div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyl0cR-hZZT486Ifm_GoMYXfMQd4mRGUpKw2Jjpl-yK1ewypWZNpIvEL4lxlxtVw6bi/exec";
+const form = document.getElementById("clientForm");
+const msg = document.getElementById("msg");
+const box = document.getElementById("box");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  msg.innerText = "⏳ جاري الإرسال...";
+  box.classList.remove("success-glow");
+
+  const formData = new FormData(form);
+
+  try {
+    const res = await fetch(scriptURL, { method: "POST", body: formData });
+    if (res.ok) {
+      msg.innerText = "✅ تم الإرسال بنجاح";
+      form.reset();
+      box.classList.add("success-glow");
+      setTimeout(() => box.classList.remove("success-glow"), 2000);
+    } else {
+      msg.innerText = "❌ حدث خطأ أثناء الإرسال";
+    }
+  } catch (err) {
+    msg.innerText = "⚠️ لم يتم الاتصال بالخادم";
+  }
+});
+</script>
+</body>
+</html>
