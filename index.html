@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> سجل بياناتك</title>
+<title>سجل بياناتك</title>
 <style>
 body {
   background-color: #0c0f0f;
@@ -14,8 +14,39 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  overflow: hidden;
 }
 
+/* 🌟 شاشة المقدمة */
+#intro-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 1s ease forwards;
+  animation-delay: 4s; /* ⏳ تختفي بعد ثانيتين */
+}
+
+#intro-screen img {
+  width: 90%;
+  max-width: 360px;
+  animation: fadeInLogo 1s ease;
+}
+
+@keyframes fadeInLogo {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* 🟩 محتوى الصفحة */
 .container {
   background: #111;
   padding: 30px;
@@ -25,6 +56,17 @@ body {
   max-width: 340px;
   text-align: center;
   transition: box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInForm 1s ease-out forwards;
+  animation-delay:4s; /* ⏳ بعد اختفاء المقدمة */
+}
+
+@keyframes fadeInForm {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h2 {
@@ -79,7 +121,6 @@ button:hover {
   color: #00ffaa;
 }
 
-/* 💫 تأثير بعد الإرسال الناجح */
 .success-glow {
   box-shadow: 0 0 25px #00ffbb;
 }
@@ -98,6 +139,12 @@ button:hover {
 </style>
 </head>
 <body>
+
+<!-- 🌟 شاشة المقدمة -->
+<div id="intro-screen">
+  <img src="intro login.png" alt="أهلاً بك في مختلف">
+</div>
+
 <div class="container" id="box">
   <h2>تسجيل بياناتك</h2>
   <form id="clientForm">
