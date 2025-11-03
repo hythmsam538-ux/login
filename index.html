@@ -11,10 +11,11 @@ body {
   font-family: "Tajawal", sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
+  min-height: 100vh;
   margin: 0;
-  overflow: hidden;
+  overflow-y: auto; /* ✅ يسمح بالتمرير */
+  scroll-behavior: smooth; /* ✅ تمرير سلس */
 }
 
 /* 🌟 شاشة المقدمة */
@@ -28,7 +29,7 @@ body {
   justify-content: center;
   z-index: 9999;
   animation: fadeOut 1s ease forwards;
-  animation-delay: 4s; /* ⏳ تختفي بعد ثانيتين */
+  animation-delay: 4s; /* ⏳ تختفي بعد 4 ثوانٍ */
 }
 
 #intro-screen img {
@@ -59,7 +60,8 @@ body {
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInForm 1s ease-out forwards;
-  animation-delay:4s; /* ⏳ بعد اختفاء المقدمة */
+  animation-delay: 4s; /* ⏳ بعد اختفاء المقدمة */
+  margin: 100px 0; /* ✅ مسافة علوية وسفلية للتمرير */
 }
 
 @keyframes fadeInForm {
@@ -147,6 +149,7 @@ button:hover {
 
 <div class="container" id="box">
   <h2>تسجيل بياناتك</h2>
+   <p class="note">             يرجى إدخال بياناتك بدقة و روابط حساباتك الموجودة فقط واترك اي حقل فارغ إذا لم يكن لديك حساب عليه </p>
   <form id="clientForm">
     <input type="text" name="name" placeholder="الاسم">
     <input type="text" name="phone" placeholder="رقم الجوال">
