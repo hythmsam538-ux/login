@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حول مُـخـتـلـف 💎</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+     :root {
+    --main-color: #00b894; /* تركواز غامق وواضح */
+    --text-dark: #111;
+    --bg-light: #f4f8fb;
+  }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      background: #fff;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      padding-top: 80px;
+    }
+
+    /* ===== الهيدر ===== */
+    header {
+      background: #fff;
+      padding: 12px 20px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .header-left, .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .menu-icon, .cart-icon {
+      font-size: 22px;
+      cursor: pointer;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .menu-icon:hover, .cart-icon:hover {
+      color: var(--main-color);
+    }
+
+    .logo img {
+      height: 35px;
+      width: auto;
+    }
+
+    /* ===== القائمة الجانبية ===== */
+    .side-menu {
+      position: fixed;
+      top: 0; right: -320px;
+      width: 290px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+      transition: right 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .side-menu.active { right: 0; }
+
+    .side-menu .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .side-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .side-menu nav a {
+      text-decoration: none;
+      color: #000;
+      font-size: 20px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .side-menu nav a:hover {
+      color: var(--main-color);
+    }
+
+    .social {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social i {
+      font-size: 20px;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .social i:hover {
+      color: var(--main-color);
+    }
+
+    /* ===== المحتوى ===== */
+    section {
+      max-width: 850px;
+      margin: 120px auto 50px;
+      background-color: var(--bg-light);
+      color: #111;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      padding: 45px 35px;
+      line-height: 1.9;
+    }
+
+    section h2 {
+      text-align: center;
+      color: #000;
+      font-size: 30px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--main-color);
+      margin: 12px auto 0;
+      border-radius: 3px;
+    }
+
+    .about-text {
+      font-size: 18px;
+      text-align: justify;
+      color: #333;
+    }
+
+    .highlight {
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .points {
+      margin-top: 25px;
+      padding-right: 20px;
+    }
+
+    .points li {
+      margin-bottom: 12px;
+      font-size: 17px;
+      list-style: "💎 ";
+      color: #222;
+    }
+
+    .points li::marker {
+      font-size: 20px;
+    }
+
+    .about-text:last-of-type {
+      margin-top: 30px;
+      font-weight: 500;
+      text-align: center;
+      font-size: 19px;
+    }
+
+    /* ===== زر الواتساب ===== */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50px;
+      padding: 12px 25px;
+      text-decoration: none;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      transition: 0.3s;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1ebe5d;
+      transform: scale(1.05);
+    }
+
+    .whatsapp-btn i {
+      margin-left: 10px;
+      font-size: 22px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #fafafa;
+      border-top: 1px solid #eee;
+      font-weight: 500;
+      color: #444;
+      font-size: 15px;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        margin: 100px 20px 20px;
+        padding: 25px 15px;
+      }
+
+      section h2 {
+        font-size: 24px;
+      }
+
+      .about-text {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== الهيدر ===== -->
+  <header>
+    <div class="header-right">
+      <i class="fa-solid fa-bars menu-icon" id="menuBtn"></i>
+    </div>
+    <div class="logo"><img src="loweb.png" alt="مُـخـتـلـف"></div>
+    <div class="header-left">
+      <i class="fa-solid fa-bag-shopping cart-icon"></i>
+    </div>
+  </header>
+
+  <!-- ===== القائمة الجانبية ===== -->
+  <div class="side-menu" id="sideMenu">
+    <div class="top">
+      <h2>مُـخـتـلـف</h2>
+      <i class="fa-solid fa-xmark" id="closeBtn"></i>
+    </div>
+    <nav>
+      <a href="website.html">🏠 الرئيسية</a>
+      <a href="features.html">✨ المميزات</a>
+      <a href="shr7.html">📘 كيف يعمل</a>
+      <a href="faq.html">❓ الأسئلة الشائعة</a>
+    </nav>
+    <div class="social">
+      <a href="https://www.instagram.com/a_different1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/message/364PZMOXC2UWA1" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+
+  <!-- ===== المحتوى ===== -->
+  <section>
+    <h2> مُـخـتـلـف | هويتك الذكية 💡</h2>
+    <p class="about-text">
+      <span class="highlight">مُـخـتـلـف</span> مش مجرد كارت ذكي — هو أسلوب جديد للتعريف بنفسك بطريقة أنيقة واحترافية.  
+      كل بياناتك، حساباتك، وروابطك في مكان واحد أنيق يوصلها أي شخص بلمسة واحدة على جواله 📱  
+      صُمم ليكون أداة تعبّر عن <span class="highlight">هويتك، احترافيتك، وتميّزك</span> في كل مقابلة أو مناسبة.
+    </p>
+
+    <ul class="points">
+      <li>تجربة استخدام سهلة وسريعة بدون تطبيقات.</li>
+      <li>تصميم أنيق يترك أول انطباع مميز لا يُنسى.</li>
+      <li>إمكانية تحديث بياناتك في أي وقت بكل سهولة.</li>
+      <li>يدعم جميع أنواع الجوالات الحديثة.</li>
+      <li>مناسب للأفراد، الشركات، وروّاد الأعمال.</li>
+    </ul>
+
+    <p class="about-text">
+      انضم إلى مئات المستخدمين اللي اختاروا يكونوا <span class="highlight"> مُـخـتـلـفـيـن</span> —  
+      لأن أول انطباع دائمًا يستحق أن يكون استثنائي 💎
+    </p>
+  </section>
+
+  <!-- ===== زر الواتساب ===== -->
+  <a href="https://wa.me/message/364PZMOXC2UWA1" class="whatsapp-btn" target="_blank">
+   أطلب الآن
+  </a>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const navLinks = document.querySelectorAll('.side-menu nav a');
+
+    menuBtn.addEventListener('click', () => {
+      sideMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      sideMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sideMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  </script>
+
+  <footer>© 2025 مُـخـتـلـف | جميع الحقوق محفوظة 💎</footer>
+</body>
+</html>
