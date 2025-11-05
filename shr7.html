@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شروحات مُـخـتـلـف</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --main-color: #00ffc3;
+      --text-dark: #1a1a1a;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      background: #fff;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      padding-top: 80px;
+    }
+
+    /* ===== الهيدر ===== */
+    header {
+      background: #fff;
+      padding: 12px 20px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-left, .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .menu-icon, .cart-icon {
+      font-size: 22px;
+      cursor: pointer;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .menu-icon:hover, .cart-icon:hover {
+      color: var(--main-color);
+    }
+
+    .logo img {
+      height: 35px;
+      width: auto;
+    }
+
+    /* ===== القائمة الجانبية ===== */
+    .side-menu {
+      position: fixed;
+      top: 0; right: -320px;
+      width: 290px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+      transition: right 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .side-menu.active { right: 0; }
+
+    .side-menu .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .side-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .side-menu nav a {
+      text-decoration: none;
+      color: #000;
+      font-size: 22px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .side-menu nav a:hover {
+      color: var(--main-color);
+    }
+
+    .social {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social i {
+      font-size: 20px;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .social i:hover {
+      color: var(--main-color);
+    }
+
+    /* ===== قسم الشرح ===== */
+    section.tutorial {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    section.tutorial h2 {
+      font-size: 30px;
+      margin-bottom: 40px;
+    }
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* حجم الفيديو والصورة */
+.video-box video,
+.image-box img {
+  width: 90%;
+  max-width: 250px;   /* 🔹 تقدر تغيرها لتكبير أو تصغير الحجم */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00e0ac;
+  object-fit: contain;
+}
+
+/* ✅ لجعلهم متناسقين على الجوال */
+@media (max-width: 600px) {
+  .video-box video,
+  .image-box img {
+    max-width: 200px;  /* 🔹 هنا الحجم في الجوال */
+  }
+  .content {
+    gap: 10px;
+  }
+}
+
+
+    p.desc {
+      margin-top: 35px;
+      font-size: 18px;
+      color: #444;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      border-top: 1px solid #eee;
+      margin-top: 60px;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== الهيدر ===== -->
+<header>
+  <div class="header-right">
+    <i class="fa-solid fa-bars menu-icon" id="menuBtn"></i>
+  </div>
+  <div class="logo"><img src="loweb.png" alt="مُـخـتـلـف"></div>
+  <div class="header-left">
+    <i class="fa-solid fa-bag-shopping cart-icon"></i>
+  </div>
+</header>
+
+<!-- ===== القائمة الجانبية ===== -->
+<div class="side-menu" id="sideMenu">
+  <div class="top">
+    <h2>مُـخـتـلـف</h2>
+    <i class="fa-solid fa-xmark" id="closeBtn"></i>
+  </div>
+  <nav>
+      <a href="website.html">🏠 الرئيسية</a>
+     <a href="about.html">عن مُـخـتـلـف</a>
+      <a href="features.html">✨ المميزات</a>
+      <a href="faq.html">❓ الأسئلة الشائعة</a>
+   
+  </nav>
+  <div class="social">
+    <a href="https://www.instagram.com/a_different1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://wa.me/message/364PZMOXC2UWA1" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  </div>
+</div>
+
+<!-- ===== قسم الشرح ===== -->
+<section class="tutorial" style="padding: 40px 0; text-align: center;">
+  <h2 style="color: #00e0ac; font-size: 26px; margin-bottom: 25px;">
+    شاهد كيف يعمل كارت مُـخـتـلـف 💎
+  </h2>
+
+  <div class="content" 
+       style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px;">
+    
+    <!-- صندوق الفيديو -->
+    <div class="video-box" style="flex: 1 1 300px; max-width: 400px;">
+      <video src="vid1.mp4" controls 
+             style="width: 100%; border-radius: 12px; box-shadow: 0 0 10px #00e0ac;">
+      </video>
+    </div>
+
+    <!-- صندوق الصورة -->
+<div class="image-box" style="flex: 1 1 300px; max-width: 400px; display: flex; justify-content: center;">
+  <img src="هيثم.png" 
+       alt="شرح كارت مُـخـتـلـف"
+       style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 10px #00e0ac; object-fit: contain;">
+</div>
+
+  </div>
+</section>
+
+
+  <p class="desc">في هذا الفيديو بنوضحلك كيفية عمل كارت مُـخـتـلـف بطريقة سهلة وبسيطة. كل ما عليك هو تقريب الكارت من الجوال، وهيفتح صفحتك الخاصة تلقائيًا بدون تطبيقات أو إعدادات معقدة. 
+  </p>
+</section>
+
+<footer>© 2025 مُـخـتـلـف | جميع الحقوق محفوظة 💎</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeBtn = document.getElementById('closeBtn');
+  const sideMenu = document.getElementById('sideMenu');
+  const navLinks = document.querySelectorAll('.side-menu nav a');
+
+  menuBtn.addEventListener('click', () => {
+    sideMenu.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    sideMenu.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      sideMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  });
+</script>
+
+</body>
+</html>
