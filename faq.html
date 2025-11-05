@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الأسئلة الشائعة | مُـخـتـلـف 💎</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --main-color: #00ffc3;
+      --text-dark: #1a1a1a;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      background: #fff;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      padding-top: 80px;
+    }
+
+    /* ===== الهيدر ===== */
+    header {
+      background: #fff;
+      padding: 12px 20px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-left, .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .menu-icon, .cart-icon {
+      font-size: 22px;
+      cursor: pointer;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .menu-icon:hover, .cart-icon:hover {
+      color: var(--main-color);
+    }
+
+    .logo img {
+      height: 45px;
+      width: auto;
+    }
+
+    /* ===== القائمة الجانبية ===== */
+    .side-menu {
+      position: fixed;
+      top: 0; right: -320px;
+      width: 290px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+      transition: right 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .side-menu.active { right: 0; }
+
+    .side-menu .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .side-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .side-menu nav a {
+      text-decoration: none;
+      color: #000;
+      font-size: 22px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .side-menu nav a:hover {
+      color: var(--main-color);
+    }
+
+    .social {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social i {
+      font-size: 20px;
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .social i:hover {
+      color: var(--main-color);
+    }
+
+    /* ===== قسم الأسئلة ===== */
+    section.faq {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    section.faq h2 {
+      font-size: 30px;
+      margin-bottom: 30px;
+      color: #000;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .faq-item {
+      background: #f9f9f9;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      text-align: right;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,255,195,0.3);
+    }
+
+    .faq-item h3 {
+      color: var(--main-color);
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .faq-item p {
+      color: #555;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ===== الفوتر ===== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      border-top: 1px solid #eee;
+      margin-top: 60px;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== الهيدر ===== -->
+  <header>
+    <div class="header-right">
+      <i class="fa-solid fa-bars menu-icon" id="menuBtn"></i>
+    </div>
+    <div class="logo"><img src="loweb.png" alt="مُـخـتـلـف"></div>
+    <div class="header-left">
+      <i class="fa-solid fa-bag-shopping cart-icon"></i>
+    </div>
+  </header>
+
+  <!-- ===== القائمة الجانبية ===== -->
+  <div class="side-menu" id="sideMenu">
+    <div class="top">
+      <h2>مُـخـتـلـف</h2>
+      <i class="fa-solid fa-xmark" id="closeBtn"></i>
+    </div>
+    <nav>
+      <a href="website.html">🏠 الرئيسية</a>
+      <a href="about.html">عن مُـخـتـلـف</a>
+ <a href="shr7.html">شرح كيف يعمل📘</a>
+      <a href="features.html">✨ المميزات</a>
+    </nav>
+    <div class="social">
+      <a href="https://www.instagram.com/a_different1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/message/364PZMOXC2UWA1" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+
+  <!-- ===== قسم الأسئلة الشائعة ===== -->
+  <section class="faq">
+    <h2>الأسئلة الشائعة 💬</h2>
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <h3>ايه هو كارت مُـخـتـلـف؟</h3>
+<p>   
+  كارت ذكي بيسهّل عليك مشاركة بياناتك وحسابات التواصل وروابطك كلها بلمسة واحدة فقط ، ويترك لك أنطباع أول جميل يدوم ، بدون تطبيقات أو اشتراك سنوي .
+</p> 
+    </div>
+
+      <div class="faq-item">
+        <h3>إزاي أطلب الكارت؟</h3>
+        <p>
+          أضغط على زر الطلب  ، أرسلنا  على واتساب هنبعتلك
+  فورم بسيط عشان تضيف البيانات والروابط اللي محتاجها وبعدها كارتك هيكون جاهز فـ أسرع وقت للأستلام أو التوصيل .
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>إيه أنواع الموبايلات اللي بتقرأ الكارت؟</h3>
+        <p>كل الموبايلات الحديثة اللي فيها تقنية NFC تقدر تقرأ الكارت بلمسة واحدة.  
+        كمان الموبايلات القديمة تقدر تمسح كود QR للوصول لصفحتك.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>هل الكارت يحتاج تجديد سنوي؟</h3>
+        <p>لا، الكارت مفعل مدى الحياة بدون أي اشتراك أو تجديد سنوي.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>هل يمكن تعديل البيانات بعد الشراء؟</h3>
+        <p>نعم، يمكنك تعديل بياناتك أو روابطك في أي وقت بسهولة من صفحتك الخاصة.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>هل مناسب للأفراد فقط؟</h3>
+        <p>الكارت مناسب للأفراد، الشركات، والمؤسسات وكل من يرغب في عرض هويته الرقمية باحتراف.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>هل يحتاج تطبيق ليعمل؟</h3>
+        <p>لا، الكارت يعمل مباشرة بلمسة واحدة عبر NFC أو كود QR دون أي تطبيق.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>هل يمكن تصميم كارت مخصص؟</h3>
+        <p>أكيد 💎 يمكنك اختيار تصميم خاص أو إضافة شعار مؤسستك ليعكس هويتك المهنية.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>© 2025 مُـخـتـلـف | جميع الحقوق محفوظة 💎</footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const navLinks = document.querySelectorAll('.side-menu nav a');
+
+    menuBtn.addEventListener('click', () => {
+      sideMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      sideMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sideMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  </script>
+
+</body>
+</html>
