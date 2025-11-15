@@ -1,417 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مُـخـتـلـف | هويتك الذكية </title>
-  <meta name="description" content="مُـخـتـلـف | كارت ذكي يجمع كل بياناتك وروابطك في لمسة واحدة اطلب الآن و عيش التجربة وكن مُـخـتـلـف
-ُ">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>    مُـخـتـلـف | هويتك الذكية </title>
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/jpeg" href="IMG_٢٠٢٥١١٠٣_١٨١٠٣٥.jpg">
+  <!-- أضف هذا في <head> -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-  <style>
-    
-    :root {
-      --main-color: #00ffc3;
-      --text-dark: #1a1a1a;
-    }
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NXMDENGNZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+      gtag('config', 'G-9NXMDENGNZ');
+    </script>
 
-    body {
-      margin: 0;
-      font-family: "Tajawal", sans-serif;
-      background: #fff;
-      color: var(--text-dark);
-      overflow-x: hidden;
-      padding-top: 80px;
-    }
-/* CSS المحسّن: ضعها داخل <style> أو في ملف CSS خارجي */
-.discount-bar {
-  background: linear-gradient(90deg, #000000, #000000);
-  color: #fff;
-  text-align: center;
-  font-size: 1.05rem;      /* أقل شوية مناسب للموبايل */
-  font-weight: 700;
-  padding: 10px 12px;
-  letter-spacing: 0.6px;
-  /* ظل نص بسيط لتحسين الوضوح */
-  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
-  /* لو تحب الانيميشن شغّل السطرين التاليين */
-  animation: glow 2s infinite alternate;
-  -webkit-animation: glow 2s infinite alternate; /* بادئة */
-  z-index: 999; /* يتأكد إنه فوق المحتوى */
-}
-
-/* animation (اختياري) */
-@keyframes glow {
-  from { text-shadow: 0 0 5px #fff, 0 0 10px #ffffff; }
-  to   { text-shadow: 0 0 15px #fff, 0 0 30px #00C6FF; }
-}
-@-webkit-keyframes glow {
-  from { text-shadow: 0 0 5px #fff, 0 0 10px #ffffff; }
-  to   { text-shadow: 0 0 15px #fff, 0 0 30px #ffffff; }
-}
-
-/* استجابة للموبايل: نص أصغر لو الشاشة صغيرة جدًا */
-@media (max-width: 420px) {
-  .discount-bar { font-size: 0.95rem; padding: 8px 10px; }
-}
-
-    /* ===== الهيدر ===== */
-    header {
-      background: #fff;
-      padding: 12px 20px;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-    }
-
-    .header-left, .header-right {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .menu-icon, .cart-icon {
-      font-size: 22px;
-      cursor: pointer;
-      color: #000;
-      transition: 0.3s;
-    }
-
-    .menu-icon:hover, .cart-icon:hover {
-      color: var(--main-color);
-    }
-
-    .logo img {
-      height: 35px;
-      width: auto;
-    }
-
-    /* ===== الصورة الرئيسية ===== */
-    .hero-image {
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .hero-image img {
-      width: 100%;
-      max-width: 520px;
-      border-radius: 14px;
-      box-shadow: 0 0 15px rgba(0, 255, 150, 0.4);
-    }
-
-    /* ===== المنتجات ===== */
-    .products {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .products h2 {
-      font-size: 30px;
-      margin-bottom: 35px;
-      font-weight: bold;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    @media (min-width: 768px) {
-      .product-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .product {
-      text-align: center;
-      position: relative;
-      background: #fafafa;
-      padding: 10px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .product:hover {
-      transform: scale(1.03);
-    }
-  
-
-
-    .product img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .old-price {
-      text-decoration: line-through;
-      color: #777;
-      font-size: 16px;
-      margin: 5px 0;
-    }
-
-  .new-price {
-        color: #000000; /* أخضر فلورسنت واضح */
-  font-weight: 500;
-  font-size: 20px;
-      }
-.new-price span {
-  color: #0a9967; /* تركوازي */
-}
-
-    .price-sa {
-      color: #25D366;
-      font-weight: 600;
-      font-size: 15px;
-      margin-top: 2px;
-    }
-  .product h3 {
-  font-size: 14px;
-  font-weight: 400; /* بدل 700 أو bold */
-  margin: 10px 0 5px;
-  color: #111; /* لون هادي */
-}
-
-
-
-
-
-    /* زر الطلب */
-    .order-all {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .order-btn {
-      display: inline-block;
-      background: #25D366;
-      color: #fff;
-      padding: 14px 40px;
-      border-radius: 30px;
-      font-size: 18px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-    }
-
-    .order-btn:hover {
-      background: #1ebe5d;
-      transform: scale(1.05);
-    }
-
-    /* ===== القائمة الجانبية ===== */
-    .side-menu {
-      position: fixed;
-      top: 0; right: -320px;
-      width: 290px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.15);
-      transition: right 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      z-index: 2000;
-    }
-
-    .side-menu.active { right: 0; }
-
-    .side-menu .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-    }
-
-    .side-menu nav {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 25px;
-    }
-
-    .side-menu nav a {
-      text-decoration: none;
-      color: #000;
-      font-size: 22px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .side-menu nav a:hover {
-      color: var(--main-color);
-    }
-    nav{
-      size: 30px;
-    }
-
-    .social {
-      display: flex;
-      gap: 15px;
-      margin-top: 10px;
-    }
-
-    .social i {
-      font-size: 29px;
-      color: #000;
-      transition: 0.3s;
-    }
-
-    .social i:hover {
-      color: var(--main-color);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #fafafa;
-      margin-top: 60px;
-      border-top: 1px solid #eee;
-      font-weight: 500;
-    }
-  </style>
 </head>
 
 <body>
+<!-- شريط علوي ثابت -->
+<header class="top-bar">
+    
+  <!-- زر القائمة للجوال -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-<header>
-  <div class="header-right">
-    <i class="fa-solid fa-bars menu-icon" id="menuBtn"></i>
-  </div>
-  <div class="logo"><img src="loweb.png" alt="مُـخـتـلـف"></div>
-  <div class="header-left">
-    <i class="fa-solid fa-bag-shopping cart-icon"></i>
-  </div>
-</header>
-</header>
-<!-- 🔽 شريط الخصم -->
-<div class="discount-bar">
-  🎉  خصم 50% على جميع البطاقات لفترة محدودة ! 🚨
-أرخص سعر في المملكة العربية السعودية و مصر 🇸🇦🇪🇬</div>
-<!-- القائمة الجانبية -->
-<div class="side-menu" id="sideMenu">
-  <div class="top">
-    <h2>مُـخـتـلـف</h2>
-    <i class="fa-solid fa-xmark" id="closeBtn"></i>
-  </div>
-  <nav>
-       <a href="about.html">عن مُـخـتـلـف</a>
- <a href="shr7.html">شرح كيف يعمل📘</a>
-      <a href="features.html"> المميزات✨ </a>
-      <a href="faq.html"> الأسئلة الشائعة❓</a>
-            <a href="index.html"> استقبال البيانات  📋</a>
-
+  <!-- الروابط -->
+  <nav class="nav-left">
+    <a href="features.html">المميزات</a>
+    <a href="shr7.html">شرح  كيف يعمل</a>
+    <a href="about.html">حول مختلف</a>
+    <a href="faq.html"> الأسئلة الشائعة</a>
   </nav>
-  <div class="social">
-     <a href="https://www.instagram.com/a_different1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-  <a href="https://www.facebook.com/share/17SvsYFmAu/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-    <a href="https://wa.me/message/364PZMOXC2UWA1" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://www.tiktok.com/@a_different_?_r=1&_t=ZS-91JP97UzArn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+
+  <!-- اللوجو في المنتصف -->
+  <div class="nav-logo">
+    <img src="logo-removebg-preview.png" alt="شعار الموقع" />
   </div>
+
+</header>
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>مُـخـتـلـف | هويتك الذكية
+</h1>
+    <p class="hero-desc">
+      اصنع انطباعًا أول يدوم، وشارك هويتك بسهولة وأناقة مع بطاقة ذكية تمثل أسلوبك.
+      اجعل كل لقاء فرصة لترك أثر، وعرّف الناس بك بطريقة عصرية تعكس احترافيتك وثقتك بنفسك.
+      <strong>بطاقة واحدة... تعرّف العالم على تفرّدك.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="https://wa.me/966547856086" class="hero-btn">ابدأ تميزك الآن</a>
+<a href="#cards" class="hero-btn ghost">البطاقات</a>
+    </div>
+  </div>
+</section>
+<!-- ===== end HERO ===== -->
+
+
+<!-- القائمة الجانبية للجوال -->
+ 
+
+<div class="side-nav" id="sideNav">
+
+  <a href="features.html" onclick="closeMenu()">المميزات</a>
+  <a href="shr7.html" onclick="closeMenu()">شرح  كيف يعمل</a>
+  <a href="about.html" onclick="closeMenu()">حول مختلف</a>
+  <a href="faq.html" onclick="closeMenu()"> الأسئلة الشائعة</a>
+  <div class="menu-social">
+  <a href="https://www.instagram.com/a_different1/#" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <a href="https://www.facebook.com/people/%D9%85%D9%8F%D9%80%D9%80%D8%AE%D9%80%D9%80%D8%AA%D9%80%D9%80%D9%84%D9%80%D9%80%D9%81-%D9%87%D9%80%D9%88%D9%8A%D9%80%D8%AA%D9%80%D9%83-%D8%A7%D9%84%D9%80%D8%B0%D9%83%D9%80%D9%8A%D9%80%D8%A9/61583562325097/?rdid=8kNMh1Lr6LfUMdfY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17SvsYFmAu%2F" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+  <a href="https://www.tiktok.com/@a_different_?_r=1&_t=ZS-91JP97UzArn" target="_blank">
+    <i class="fa-brands fa-tiktok"></i>
+  </a>
+  <a href="https://wa.me/966547856086" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 </div>
 
-<!-- الصورة الرئيسية -->
-<div class="hero-image" id="home">
-  <img src="inntroo.png" alt="صورة مختلفة" />
 </div>
 
-<!-- قسم المنتجات -->
-<section class="products" id="cards">
-  <h2>البطاقات الأكثر مبيعاً </h2>
-  <div class="product-grid">
+<!-- تراك الخلفية عند فتح القائمة -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-    <div class="product">
-      <img src="منتج ابيض.png" alt="White Card">
-      <h3>Different | White Card</h3>
-      <p class="old-price">SAR 120</p>
-<p class="new-price"><span>Price</span> : 60 SAR</p>
-    </div>
-
-    <div class="product">
-      <img src="منتج اسود.png" alt="Black Card">
-      <h3>Different | Black Card</h3>
-        <p class="old-price">SAR 120</p>
-<p class="new-price"><span>Price</span> : 60 SAR</p>
-    </div>
-
-     <div class="product">
-      <img src="منتج بمبي.png" alt="Wood Card">
-      <h3>Different | Pink Card</h3>
-        <p class="old-price">SAR 120</p>
-<p class="new-price"><span>Price</span> : 60 SAR</p>
-    </div>
-
-    <div class="product">
-      <img src="منتج ازرق.png" alt="Silver Card">
-      <h3>Different | Blue Card</h3>
-      <p class="old-price">SAR 120</p>
-<p class="new-price"><span>Price</span> : 60 SAR</p>
-    </div>
-
-<div class="product">
-      <img src="منتج بيرجندي.png" alt="Gold Card">
-      <h3>Different | Burgundy Card</h3>
-        <p class="old-price">SAR 120</p>
-<p class="new-price"><span>Price</span> : 60 SAR</p>
-    </div>
+  <div class="container">
    
-    <div class="product">
-      <img src="منتج مؤسسة.png" alt="Blue Card">
-      <h3> Different | special cards for your organization</h3>
-      <p class="old-price">SAR 140</p>
-<p class="new-price"><span>Price</span> : 75 SAR</p>
-    </div>
 
+<section class="features-intro">
+  <h2 data-aos="fade-up"> مميزاتنا </h2>
+</section>
+
+<section class="intro-cards">
+  <div class="intro-card">
+    <div class="icon">⭐</div>
+    <h3>يُميزك من أول لمسة</h3>
+    <p>كارت مُـختلِف يعكس حضورك فوراً! تصميم عصري وتقنية ذكية تُظهر هويتك باحترافية وأناقة.</p>
   </div>
 
-  <div class="order-all">
-    <a href="https://wa.me/message/364PZMOXC2UWA1" target="_blank" class="order-btn"> اطلب الآن و عيش التجربة</a>
+  <div class="intro-card">
+    <div class="icon">⚡</div>
+    <h3>تواصلك أسهل وأسرع</h3>
+    <p>بلمسة واحدة فقط ، بمجرد ما تقرب الكارت من الجوال , تُشارك بياناتك وروابطك كلها فوراً مع أي شخص — بدون تطبيقات إضافية.</p>
+  </div>
+
+  <div class="intro-card">
+    <div class="icon">🏆</div>
+    <h3>ضمان أصلي وجودة عالية</h3>
+    <p>بطاقات مصنوعة بمعايير احترافية لضمان أداء ممتاز ومتانة تدوم طويلاً في كل استخدام.</p>
+  </div>
+
+  <div class="intro-card">
+    <div class="icon">♾️</div>
+    <h3>مدى الحياة بدون تجديد</h3>
+    <p>بطاقتك الذكية صالحة مدى الحياة دون رسوم شهرية أو اشتراكات — امتلكها مرة واستفد للأبد.</p>
   </div>
 </section>
 
-<footer>© 2025 مُـخـتـلـف | جميع الحقوق محفوظة 💎</footer>
+<section class="for-all">
+  <h2 data-aos="fade-up"> يتناسب مع كل من يسعى للتميّز بخطوة ذكية</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">👤</div>
+      <h3>الأفراد</h3>
+      <p>بطاقة ذكية تساعدك على مشاركة معلوماتك وشبكاتك بسهولة مع أصدقائك أو زملائك.</p>
+    </div>
 
-<script>
-  const menuBtn = document.getElementById('menuBtn');
-  const closeBtn = document.getElementById('closeBtn');
-  const sideMenu = document.getElementById('sideMenu');
-  const navLinks = document.querySelectorAll('.side-menu nav a');
+    <div class="card">
+      <div class="icon">🏪</div>
+      <h3>المحلات التجارية والمؤسسات</h3>
+      <p>اعرض منتجاتك وروابط متجرك، وشارك موقعك بلمسة واحدة على بطاقة ذكية أنيقة تجذب العملاء.</p>
+    </div>
 
-  menuBtn.addEventListener('click', () => {
-    sideMenu.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
+    <div class="card">
+      <div class="icon">🍽️</div>
+      <h3>المطاعم والكافيهات</h3>
+      <p>شارك قائمة الطعام أو موقعك أو حساباتك مباشرة مع الزبائن بطريقة حديثة.</p>
+    </div>
 
-  closeBtn.addEventListener('click', () => {
-    sideMenu.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  });
+    <div class="card">
+      <div class="icon">🚚</div>
+      <h3>المندوبين</h3>
+      <p>قدّم نفسك باحتراف وشارك كل بياناتك فورًا دون الحاجة لكروت ورقية.</p>
+    </div>
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      sideMenu.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    });
-  });
-</script>
+    <div class="card">
+      <div class="icon">🏫</div>
+      <h3>مكاتب القبول والتسجيل</h3>
+      <p>أنجز التواصل بسرعة وسهولة مع الطلاب أو المتقدمين من خلال بطاقة ذكية واحدة.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🕋</div>
+      <h3>الحج والعمرة</h3>
+<p>
+بطاقة ذكية ترافق المعتمر بخطوة أمان.
+تُسهل الوصول وتُعرّف بك بسرعة عند الحاجة،
+فتمنح راحة البال لك ولمن يهتم بأمرك.
+معها لن يتوه المعتمر، ولن يتأخر التواصل،
+وتبقى تجربتك أكثر أمانًا وتنظيمًا. لأن التفاصيل تصنع الثقة خلي مكتبك يظهر بأفضل صورة
+هوية ذكية تُظهر احتراف مكتبك      </p>   
+ </div>
+  </div>
+</section>
+      <!--  اراء العملاء -->
+<!-- 
+
+<section class="testimonials">
+  <h2 class="section-title">آراء العملاء</h2>
+
+  <div class="slider-container">
+    <button class="prev-btn">&#10094;</button>
+
+    <div class="slider">
+      <div class="slide"><img src="منتج ازرق.png" alt="رأي عميل 1"></div>
+      <div class="slide"><img src="منتج اسود.png" alt="رأي عميل 2"></div>
+      <div class="slide"><img src="منتج بيرجندي.png" alt="رأي عميل 3"></div>
+      <div class="slide"><img src="منتج مؤسسة.png" alt="رأي عميل 4"></div>
+    </div>
+
+    <button class="next-btn">&#10095;</button>
+  </div>
+</section>
+-->
+
+
+<section id="cards" class="for-all">
+  <h2 data-aos="fade-up">    البطاقات    </h2>
+    <section class="grid">
+
+      <!-- Product 1 -->
+      <div class="card">
+        <div class="badge">الأكثر مبيعا</div>
+        <div class="img"><img src="منتج اسود.png" alt="NTAG215 Pack 10"/></div>
+        <div class="title">Different | Black Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+</div>
+
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card">
+
+        <div class="img"><img src="منتج ازرق.png" alt="NTAG215 Pack 50"/></div>
+        <div class="title">Different | Blue Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="card">
+        <div class="img"><img src="منتج بيرجندي.png" alt="NTAG215 Pack 200"/></div>
+        <div class="title">Different | Burgundy  Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="card">
+        <div class="img"><img src="منتج ابيض.png" alt="PVC UV Pack 50"/></div>
+       <div class="title">Different | White   Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="card">
+        <div class="img"><img src="منتج بمبي.png" alt="Inkjet PVC Pack 50"/></div>
+        <div class="title">Different | Pink    Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086 ">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="card">
+        <div class="img"><img src="منتج مؤسسة.png" alt="Special Card"/></div>
+        <div class="title">Different |  Special cards for your organization</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 150</span>
+  <span class="new-price">SAR 75</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086 ">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+    </section>
+<!-- Social Media Icons -->
+<div class="social-links">
+  <a href="https://www.instagram.com/a_different1/#" target="_blank" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.facebook.com/people/%D9%85%D9%8F%D9%80%D9%80%D8%AE%D9%80%D9%80%D8%AA%D9%80%D9%80%D9%84%D9%80%D9%80%D9%81-%D9%87%D9%80%D9%88%D9%8A%D9%80%D8%AA%D9%80%D9%83-%D8%A7%D9%84%D9%80%D8%B0%D9%83%D9%80%D9%8A%D9%80%D8%A9/61583562325097/?rdid=HjxBHhxtschG2Ns0&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17SvsYFmAu%2F" target="_blank" aria-label="Facebook">
+    <i class="fab fa-facebook"></i>
+  </a>
+  <a href="https://www.tiktok.com/@a_different_?_r=1&_t=ZS-91JP97UzArn" target="_blank" aria-label="TikTok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+  <a href="https://wa.me/966547856086" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+    <footer>
+© 2025 مُـخـتـلـف | جميع الحقوق محفوظة 💎    
+</footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose" aria-label="إغلاق">✕</button>
+      <div class="modal-img"><img id="modalImage" src="" alt="عرض البطاقة"/></div>
+    </div>
+  </div>
+  <!-- زر الرجوع للأعلى -->
+<button id="backToTop" title="الرجوع للأعلى">↑</button>
+  <script src="script.js"></script>
+
+
+
 
 </body>
 </html>
