@@ -65,7 +65,7 @@
     }
 
     .social i {
-      font-size: 29px;
+      font-size: 38px;
       color: #000;
       transition: 0.3s;
     }
@@ -180,19 +180,15 @@
     <i class="fa-solid fa-xmark" id="closeBtn"></i>
   </div>
   <nav>
-      <a href="website.html">🏠 الرئيسية</a>
+      <a href="index.html">🏠 الرئيسية</a>
      <a href="about.html">عن مُـخـتـلـف</a>
-      <a href="shr7.html">شرح كيف يعمل📘</a>
       <a href="features.html">✨ المميزات</a>
       <a href="faq.html">❓ الأسئلة الشائعة</a>
    
   </nav>
   <div class="social">
-  <a href="https://www.instagram.com/a_different1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-  <a href="https://www.facebook.com/share/17SvsYFmAu/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.instagram.com/a_different1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
     <a href="https://wa.me/message/364PZMOXC2UWA1" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://www.tiktok.com/@a_different_?_r=1&_t=ZS-91JP97UzArn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-
   </div>
 </div>
 
@@ -214,6 +210,10 @@
       <input type="url" name="TikTok" placeholder="رابط TikTok">
       <input type="url" name="Snapchat" placeholder="رابط Snapchat">
       <input type="url" name="X" placeholder="رابط X (تويتر)">
+      <input type="url" name="youtube" placeholder="رابط Youtube">
+      <input type="url" name="website" placeholder="رابط الموقع الالكتروني الخاص بك">
+
+
       <button type="submit">إرسال البيانات</button>
       <p style="color:#000000; font-size:13px; text-align:center; margin-top:12px; opacity:0.9;">
    بياناتك آمنة ومحمية، ولن يتم مشاركتها مع أي جهة أخرى.🔒
@@ -241,7 +241,7 @@
       const data = Object.fromEntries(new FormData(form).entries());
 
       try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycby-DHpwwF_4fnN1jHHNX1IuKq8NPa4Ag8qBPyDYsIDpHWdyb8mhpc9wkUfPNITLHTZY/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwiSg7CWlekkjKENTNRPZ1rEeVmhkq-z6knCm4ob3oizRHx_QIgMdsMrgg4J1Qq_R0R/exec", {
   method: "POST",
   body: new FormData(form)
 });
