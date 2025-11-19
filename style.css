@@ -328,7 +328,7 @@ footer {
 
 .features-intro h2 {
   font-family: 'Noto Kufi Arabic', sans-serif;
-  font-size: 50px;
+  font-size: 36px;
   font-weight: 800;
   background: linear-gradient(90deg, var(--accent2), var(--accent));
   -webkit-background-clip: text;
@@ -957,4 +957,88 @@ font-size: 32px;
 #backToTop:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px #7a3cff;
+}
+
+.footer {
+  width: 100%;
+  background: linear-gradient(135deg, #020b1b, #04162d, #051e3a);
+  padding: 60px 20px 30px;
+  color: #fff;
+  direction: rtl;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 260px;
+}
+
+.footer-section h3 {
+  color: #72b7e6;
+  font-size: 22px;
+  margin-bottom: 20px;
+  border-right: 4px solid #ffffff;
+  padding-right: 10px;
+}
+
+.footer-section p {
+  color: #d9d9d9;
+  line-height: 1.8;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin: 10px 0;
+  color: #d0d0d0;
+  font-size: 16px;
+}
+
+.footer-section a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-section a:hover {
+  padding-right: 8px;
+  color: #fff;
+}
+
+.footer-logo {
+  width: 300px;
+  margin-bottom: 20px;
+  
+}
+
+.footer-social a {
+  color: #fff;
+  font-size: 35px;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  color: #2fc0b9;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 25px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  color: #d0d0d0;
+  font-size: 15px;
 }
