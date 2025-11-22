@@ -1,287 +1,399 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مُـخـتـلـف | استقبال البيانات</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      font-family: "Tajawal", sans-serif;
-      background-color: #f7f7f7;
-      margin: 0;
-      color: #222;
-    }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>    مُـخـتـلـف | هويتك الذكية </title>
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" href="logo.jpeg">
+<link rel="stylesheet" href="aos.css" media="print" onload="this.media='all'">
 
-    /* ===== القائمة الجانبية ===== */
-    .side-menu {
-      position: fixed;
-      top: 0; right: -320px;
-      width: 290px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.15);
-      transition: right 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      z-index: 2000;
-    }
+  <!-- أضف هذا في <head> -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-    .side-menu.active { right: 0; }
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NXMDENGNZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    .side-menu .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-    }
+      gtag('config', 'G-9NXMDENGNZ');
+    </script>
 
-    .side-menu nav {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 25px;
-    }
-
-    .side-menu nav a {
-      text-decoration: none;
-      color: #000;
-      font-size: 22px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    .side-menu nav a:hover {
-      color: var(--main-color);
-    }
-
-    .social {
-      display: flex;
-      gap: 15px;
-      margin-top: 10px;
-    }
-
-    .social i {
-      font-size: 38px;
-      color: #000;
-      transition: 0.3s;
-    }
-
-    .social i:hover {
-      color: var(--main-color);
-    }
-
-    :root {
-      --main-color: #00ffc3;
-      --text-dark: #1a1a1a;
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Tajawal", sans-serif;
-      background: #fff;
-      color: var(--text-dark);
-      overflow-x: hidden;
-      padding-top: 80px;
-    }
-
-    header {
-      background: #fff;
-      padding: 12px 20px;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-    }
-
-    .menu-icon, .cart-icon {
-      font-size: 22px;
-      cursor: pointer;
-      color: #000;
-      transition: 0.3s;
-    }
-
-    .menu-icon:hover, .cart-icon:hover {
-      color: var(--main-color);
-    }
-
-    .logo img {
-      height: 35px;
-      width: auto;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 50px auto;
-      background: white;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .container h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #003f36;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-family: inherit;
-      font-size: 15px;
-      background: #fafafa;
-    }
-    button {
-      background-color: #003f36;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      width: 100%;
-      border-radius: 8px;
-      font-size: 20px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #00ffc3;
-      color: #000;
-    }
-  </style>
 </head>
 
 <body>
+<!-- شريط علوي ثابت -->
+<header class="top-bar">
+    
+  <!-- زر القائمة للجوال -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-  <header>
-    <div class="header-right">
-      <i class="fa-solid fa-bars menu-icon"></i>
-    </div>
-    <div class="logo"><img src="loweb.png" alt="مُـخـتـلـف"></div>
-    <div class="header-left">
-      <i class="fa-solid fa-bag-shopping cart-icon"></i>
-    </div>
-  </header>
-<!-- ===== القائمة الجانبية ===== -->
-<div class="side-menu" id="sideMenu">
-  <div class="top">
-    <h2>مُـخـتـلـف</h2>
-    <i class="fa-solid fa-xmark" id="closeBtn"></i>
-  </div>
-  <nav>
-      <a href="website.html">🏠 الرئيسية</a>
-     <a href="about.html">عن مُـخـتـلـف</a>
-      <a href="features.html">✨ المميزات</a>
-      <a href="faq.html">❓ الأسئلة الشائعة</a>
-   
+  <!-- الروابط -->
+  <nav class="nav-left">
+    <a href="features.html">المميزات</a>
+    <a href="shr7.html">  العرض الواقعي </a>
+    <a href="about.html">عن مُـخـتـلـف </a>
+    <a href="faq.html"> الأسئلة الشائعة</a>
   </nav>
-  <div class="social">
-    <a href="https://www.instagram.com/a_different1" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://wa.me/message/364PZMOXC2UWA1" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/people/%D9%85%D9%8F%D9%80%D9%80%D8%AE%D9%80%D9%80%D8%AA%D9%80%D9%80%D9%84%D9%8
-    0%D9%80%D9%81-%D9%87%D9%80%D9%88%D9%8A%D9%80%D8%AA%D9%80%D9%83-%D8%A7%D9%84%D9%80%D8%B0%D9%83%D9%80%D9%8A%D9%80%D
-    8%A9/61583562325097/?rdid=HjxBHhxtschG2Ns0&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17SvsYFmAu%2F" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-    <a href="https://www.tiktok.com/@a_different_?_r=1&_t=ZS-91JP97UzArn" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+
+  <!-- اللوجو في المنتصف -->
+  <div class="nav-logo">
+    <img src="logo-removebg-preview.png" loading="lazy" alt="شعار الموقع" />
   </div>
+
+</header>
+<!-- زر الجرس + شريط الخصومات -->
+<button id="alertBtn" class="alert-btn">
+  <i class="fa-solid fa-bell"></i>
+</button>
+
+<div id="discountBar" class="discount-bar">
+  <span>🔥 خصم 50% في السعودية — وخصم 43% في مصر
+اختار بطاقتك الآن قبل انتهاء العرض !</span>
+  <button id="hideBar" class="hide-bar">×</button>
 </div>
 
-  <div class="container">
-    <h2>📋 نموذج استقبال البيانات</h2>
-    <p style="color:#000000; font-size:14px; margin-top:5px;">
-من فضلك أدخل بياناتك بدقة ✍️   
-وإذا ما عندك حساب على أحد وسائل التواصل الاجتماعي، اتركه فارغًا ولا تضفه 🚫  
-كل معلومة تساعدنا نعرض ملفك بشكل احترافي 💎</p>
-    <form id="dataForm" name="google-sheet">
-      <input type="text" name="الاسم" placeholder="الاسم" required>
-      <input type="text" name="رقم الجوال" placeholder="رقم الجوال" required>
-      <textarea name="نبذة" placeholder="نبذة عنك أو تخصصك"></textarea>
-      <textarea name="تحية" placeholder="اكتب اقتباس أو دعاء أو أي شيء"></textarea>
-      <input type="url" name="Facebook" placeholder="رابط Facebook">
-      <input type="url" name="Instagram" placeholder="رابط Instagram">
-      <input type="url" name="WhatsApp" placeholder="رابط WhatsApp">
-      <input type="url" name="Telegram" placeholder="رابط Telegram">
-      <input type="url" name="TikTok" placeholder="رابط TikTok">
-      <input type="url" name="Snapchat" placeholder="رابط Snapchat">
-      <input type="url" name="X" placeholder="رابط X (تويتر)">
-      <input type="url" name="youtube" placeholder="رابط Youtube">
-      <input type="url" name="website" placeholder="رابط الموقع الالكتروني الخاص بك">
-
-
-      <button type="submit">إرسال البيانات</button>
-      <p style="color:#000000; font-size:13px; text-align:center; margin-top:12px; opacity:0.9;">
-   بياناتك آمنة ومحمية، ولن يتم مشاركتها مع أي جهة أخرى.🔒
-</p>
-    </form>
-  </div>
-<footer style="text-align: center; padding: 15px 0; border-top: 1px solid #eee; margin-top: 40px; font-family: 'Tajawal', sans-serif;">
-  <p style="margin: 0; color: #333; font-size: 14px;">
-    © 2025 <strong>مُـخـتـلـف 💎</strong> | جميع الحقوق محفوظة
-  </p>
-  <script>
-    const form = document.getElementById('dataForm');
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const name = form.querySelector('input[name="الاسم"]').value.trim();
-      const phone = form.querySelector('input[name="رقم الجوال"]').value.trim();
-
-      if (!name || !phone) {
-        alert("⚠️ من فضلك أدخل الاسم ورقم الجوال.");
-        return;
-      }
-
-      const data = Object.fromEntries(new FormData(form).entries());
-
-      try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwiSg7CWlekkjKENTNRPZ1rEeVmhkq-z6knCm4ob3oizRHx_QIgMdsMrgg4J1Qq_R0R/exec", {
-  method: "POST",
-  body: new FormData(form)
-});
-
-
-        if (response.ok) {
-          alert("✅ تم إرسال البيانات بنجاح، شكرًا لك!");
-          form.reset();
-        } else {
-          alert("❌ حدث خطأ أثناء الإرسال، حاول مرة أخرى.");
-        }
-      } catch (error) {
-        alert("⚠️ لا يمكن الاتصال بالخادم حالياً.");
-        console.error(error);
-      }
-    });
-  </script>
-
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>مُـخـتـلـف | هويتك الذكية
+</h1>
+    <p class="hero-desc">
+      اصنع انطباعًا أول يدوم، وشارك هويتك بسهولة وأناقة مع بطاقة ذكية تمثل أسلوبك.
+      اجعل كل لقاء فرصة لترك أثر، وعرّف الناس بك بطريقة عصرية تعكس احترافيتك وثقتك بنفسك.
+      <strong>بطاقة واحدة... تعرّف العالم على تفرّدك.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="https://wa.me/966547856086" class="hero-btn">ابدأ تميزك الآن</a>
+<a href="#cards" class="hero-btn ghost">البطاقات</a>
+<!-- زر HTML (ممكن تستخدمه مكان زر "سعر مصر") -->
+<a href="#" id="waPriceBtn" class="hero-btn ghost">أستفسر عن سعر مصر </a>
 
 <script>
-  const menuIcon = document.querySelector(".menu-icon");
-  const closeBtn = document.getElementById("closeBtn");
-  const sideMenu = document.getElementById("sideMenu");
+  // رقمك بالصيغة الدولية (بدون +) - هنا استخدمت: 966547856086
+  const waPhone = '966547856086';
 
-  // فتح القائمة
-  menuIcon.addEventListener("click", () => {
-    sideMenu.classList.add("active");
-    document.body.style.overflow = "hidden";
-  });
+  // الرسالة بالضبط كما كتبتها
+  const waMessage = 'السلام عليكم، ممكن أعرف سعر كارت مختلف ؟';
 
-  // غلق القائمة
-  closeBtn.addEventListener("click", () => {
-    sideMenu.classList.remove("active");
-    document.body.style.overflow = "auto";
+  document.getElementById('waPriceBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    const url = 'https://wa.me/' + waPhone + '?text=' + encodeURIComponent(waMessage);
+    window.open(url, '_blank');
   });
 </script>
+
+
+    </div>
+  </div>
+</section>
+<!-- ===== end HERO ===== -->
+
+ <!-- زر التنبيه -->
+
+<!-- القائمة الجانبية للجوال -->
+ 
+
+<div class="side-nav" id="sideNav">
+
+  <a href="features.html" onclick="closeMenu()">المميزات</a>
+  <a href="shr7.html" onclick="closeMenu()">العرض الواقعي</a>
+  <a href="about.html" onclick="closeMenu()">عن مُـخـتـلـف </a>
+  <a href="faq.html" onclick="closeMenu()"> الأسئلة الشائعة</a>
+  <div class="menu-social">
+  <a href="https://www.instagram.com/a_different1/#" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+  <a href="https://www.facebook.com/people/%D9%85%D9%8F%D9%80%D9%80%D8%AE%D9%80%D9%80%D8%AA%D9%80%D9%80%D9%84%D9%80%D9%80%D9%81-%D9%87%D9%80%D9%88%D9%8A%D9%80%D8%AA%D9%80%D9%83-%D8%A7%D9%84%D9%80%D8%B0%D9%83%D9%80%D9%8A%D9%80%D8%A9/61583562325097/?rdid=8kNMh1Lr6LfUMdfY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17SvsYFmAu%2F" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+  <a href="https://www.tiktok.com/@a_different_?_r=1&_t=ZS-91JP97UzArn" target="_blank">
+    <i class="fa-brands fa-tiktok"></i>
+  </a>
+  <a href="https://wa.me/966547856086" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
+
+</div>
+
+<!-- تراك الخلفية عند فتح القائمة -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <div class="container">
+   
+
+<section class="features-intro">
+  <h2 data-aos="fade-up"> مميزاتنا </h2>
+</section>
+
+<section class="intro-cards">
+  <div class="intro-card">
+    <div class="icon">⭐</div>
+    <h3>يُميزك من أول لمسة</h3>
+    <p>كارت مُـختلِف يعكس حضورك فوراً! تصميم عصري وتقنية ذكية تُظهر هويتك باحترافية وأناقة.</p>
+  </div>
+
+  <div class="intro-card">
+    <div class="icon">⚡</div>
+    <h3>تواصلك أسهل وأسرع</h3>
+    <p>بلمسة واحدة فقط ، بمجرد ما تقرب الكارت من الجوال , تُشارك بياناتك وروابطك كلها فوراً مع أي شخص — بدون تطبيقات إضافية.</p>
+  </div>
+
+  <div class="intro-card">
+    <div class="icon">🏆</div>
+    <h3>ضمان أصلي وجودة عالية</h3>
+    <p>بطاقات مصنوعة بمعايير احترافية لضمان أداء ممتاز ومتانة تدوم طويلاً في كل استخدام.</p>
+  </div>
+
+  <div class="intro-card">
+    <div class="icon">♾️</div>
+    <h3>مدى الحياة بدون تجديد</h3>
+    <p>بطاقتك الذكية صالحة مدى الحياة دون رسوم شهرية أو اشتراكات — امتلكها مرة واستفد للأبد.</p>
+  </div>
+</section>
+
+<section class="for-all">
+  <h2 data-aos="fade-up"> يتناسب مع كل من يسعى للتميّز بخطوة ذكية</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">👤</div>
+      <h3>الأفراد</h3>
+      <p>بطاقة ذكية تساعدك على مشاركة معلوماتك وشبكاتك بسهولة مع أصدقائك أو زملائك.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏪</div>
+      <h3>المحلات التجارية والمؤسسات</h3>
+      <p>اعرض منتجاتك وروابط متجرك، وشارك موقعك بلمسة واحدة على بطاقة ذكية أنيقة تجذب العملاء.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🍽️</div>
+      <h3>المطاعم والكافيهات</h3>
+      <p>شارك قائمة الطعام أو موقعك أو حساباتك مباشرة مع الزبائن بطريقة حديثة.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚚</div>
+      <h3>المندوبين</h3>
+      <p>قدّم نفسك باحتراف وشارك كل بياناتك فورًا دون الحاجة لكروت ورقية.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏫</div>
+      <h3>مكاتب القبول والتسجيل</h3>
+      <p>أنجز التواصل بسرعة وسهولة مع الطلاب أو المتقدمين من خلال بطاقة ذكية واحدة.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🕋</div>
+      <h3>الحج والعمرة</h3>
+<p>
+بطاقة ذكية ترافق المعتمر بخطوة أمان.
+تُسهل الوصول وتُعرّف بك بسرعة عند الحاجة،
+فتمنح راحة البال لك ولمن يهتم بأمرك.
+معها لن يتوه المعتمر، ولن يتأخر التواصل،
+وتبقى تجربتك أكثر أمانًا وتنظيمًا. لأن التفاصيل تصنع الثقة خلي مكتبك يظهر بأفضل صورة
+هوية ذكية تُظهر احتراف مكتبك      </p>   
+ </div>
+  </div>
+</section>
+      <!--  اراء العملاء -->
+<!-- 
+
+<section class="testimonials">
+  <h2 class="section-title">آراء العملاء</h2>
+
+  <div class="slider-container">
+    <button class="prev-btn">&#10094;</button>
+
+    <div class="slider">
+      <div class="slide"><img src="منتج ازرق.png" alt="رأي عميل 1"></div>
+      <div class="slide"><img src="منتج اسود.png" alt="رأي عميل 2"></div>
+      <div class="slide"><img src="منتج بيرجندي.png" alt="رأي عميل 3"></div>
+      <div class="slide"><img src="منتج مؤسسة.png" alt="رأي عميل 4"></div>
+    </div>
+
+    <button class="next-btn">&#10095;</button>
+  </div>
+</section>
+-->
+
+
+<section id="cards" class="for-all">
+  <h2 data-aos="fade-up">    البطاقات    </h2>
+    <section class="grid">
+
+      <!-- Product 1 -->
+      <div class="card">
+        <div class="badge">الأكثر مبيعا</div>
+        <div class="img"><img src="منتج اسود.png" loading="lazy" alt="NTAG215 Pack 10"/></div>
+        <div class="title">Different | Black Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+</div>
+
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card">
+
+        <div class="img"><img src="منتج ازرق.png" loading="lazy" alt="NTAG215 Pack 50"/></div>
+        <div class="title">Different | Blue Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="card">
+        <div class="img"><img src="منتج بيرجندي.png" loading="lazy" alt="NTAG215 Pack 200"/></div>
+        <div class="title">Different | Burgundy  Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="card">
+        <div class="img"><img src="منتج ابيض.png" loading="lazy" alt="PVC UV Pack 50"/></div>
+       <div class="title">Different | White   Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="card">
+                <div class="badge">الأكثر مبيعا</div>
+
+        <div class="img"><img src="منتج بمبي.png" loading="lazy" alt="Inkjet PVC Pack 50"/></div>
+        <div class="title">Different | Pink    Card</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 120</span>
+  <span class="new-price">SAR 60</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086 ">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="card">
+        <div class="img"><img src="منتج مؤسسة.png" loading="lazy" alt="Special Card"/></div>
+        <div class="title">Different |  Special cards for your organization</div>  
+     
+        <div class="price-box">
+  <span class="old-price">SAR 150</span>
+  <span class="new-price">SAR 75</span>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://wa.me/966547856086 ">اطلب عبر واتساب</a>
+          <button class="btn ghost details">عرض</button>
+        </div>
+      </div>
+
+    </section>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-section">
+      <img src="logo-removebg-preview.png" loading="lazy" class="footer-logo" alt="logo" />
+      <p>
+كارت مُـخـتـلـف هو بطاقتك الذكية العصرية اللي تجمع كل معلوماتك في مكان واحد.
+بمجرد ما يلمس أي جوال، تظهر صفحتك اللي فيها حساباتك وروابطك وأرقامك فورًا… بدون تطبيقات وبدون أي تعقيد.
+
+طريقة أسرع، احترافية، وتخليك دايمًا مميز قدّام الناس.
+كارت واحد يغنيك عن عشرات الروابط، ويفتح لك فرص جديدة بمجرد لمسة.
+
+اطلب كارِتك الآن وابدأ اختلافك      </p>
+
+      <div class="footer-social">
+        <a href="https://www.facebook.com/people/%D9%85%D9%8F%D9%80%D9%80%D8%AE%D9%80%D9%80%D8%AA%D9%80%D9%80%D9%84%D9%80%D9%80%D9%81
+        -%D9%87%D9%80%D9%88%D9%8A%D9%80%D8%AA%D9%80%D9%83-%D8%A7%D9%84%D9%80%D8%B0%D9%83%D9%80%D9%8A%D9%80%D8%A9/61583562325097/?rdid=8kN
+        Mh1Lr6LfUMdfY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17SvsYFmAu%2F"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/a_different1/#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@a_different_?_r=1&_t=ZS-91JP97UzArn"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/966547856086"><i class="fab fa-whatsapp"></i></a>
+
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h3>العناوين</h3>
+      <ul>
+        <li>📍 جمهورية مصر العربية - محافظة المنيا - مدينة ملوي</li>
+        <li>📍 المملكة العربية السعودية - محافظة حفر الباطن</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>روابط سريعة</h3>
+      <ul>
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="about.html">  عن مُـخـتـلـف </a></li>
+        <li><a href="features.html">المميزات</a></li>
+        <li><a href="shr7.html">  العرض الواقعي
+</a></li>
+        <li><a href="#cards">البطاقات</a></li>
+        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+        <li><a href="https://wa.me/966547856086">تواصل معنا</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    جميع الحقوق محفوظة © 2025 | مختلف
+  </div>
+</footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose" aria-label="إغلاق">✕</button>
+      <div class="modal-img"><img id="modalImage" src="" alt="عرض البطاقة"/></div>
+    </div>
+  </div>
+  <!-- زر الرجوع للأعلى -->
+<button id="backToTop" title="الرجوع للأعلى">↑</button>
+  <script src="S.js"></script>
+<script src="script.js" defer></script>
+
+
 
 
 </body>
