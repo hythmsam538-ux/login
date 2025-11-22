@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مُـخـتـلـف | العرض الواقعي</title>
+
+  <!-- أيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="theme-color" content="#001727">
+
+  <style>
+    :root {
+      --main-color: #00e0ac;
+      --dark: #001727;
+      --text-dark: #1a1a1a;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Tajawal", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #ffffff, #f4f7ff);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      padding-top: 72px;
+    }
+
+    a { text-decoration: none; }
+
+    /* =================== الهيدر =================== */
+    .main-header {
+      background: #ffffff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+    }
+
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .menu-icon,
+    .cart-icon {
+      font-size: 22px;
+      cursor: pointer;
+      color: #111;
+      transition: 0.25s;
+    }
+    .menu-icon:hover,
+    .cart-icon:hover {
+      color: var(--main-color);
+    }
+
+    .logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    /* =================== القائمة الجانبية =================== */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 280px;
+      height: 100%;
+      background: #ffffff;
+      box-shadow: -3px 0 16px rgba(0,0,0,0.15);
+      transition: right 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 18px;
+      z-index: 2000;
+    }
+    .side-menu.active { right: 0; }
+
+    .side-menu .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .side-menu .top h2 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--dark);
+    }
+    .side-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .side-menu nav a {
+      font-size: 22px;
+      color: #222;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .side-menu nav a:hover {
+      color: var(--main-color);
+      padding-right: 4px;
+    }
+    .side-menu .social {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .side-menu .social a {
+      font-size: 33px;
+      color: #222;
+      transition: 0.25s;
+    }
+    .side-menu .social a:hover {
+      color: var(--main-color);
+      transform: translateY(-2px);
+    }
+
+    /* =================== إعدادات عامة للأقسام =================== */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .section {
+      margin-bottom: 54px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #0ed1a7;
+      letter-spacing: 0.5px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      margin: -6px auto 30px;
+      max-width: 620px;
+      font-size: 15px;
+      color: #5f6c80;
+      line-height: 1.8;
+    }
+
+    .section-divider {
+      width: 90%;
+      height: 2px;
+      margin: 36px auto 0;
+      background: linear-gradient(to right, transparent, var(--main-color), transparent);
+      border-radius: 999px;
+      opacity: 0.6;
+    }
+
+    /* =================== كروت عامة =================== */
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.13);
+    }
+
+    /* =================== القسم 1: كيف تقدّم لك هويتك الذكية =================== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .media-wrapper {
+      position: relative;
+      background: #000;
+    }
+
+    .media-wrapper img,
+    .media-wrapper video {
+      width: 100%;
+      height: 370px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+    }
+
+    .card-body {
+      padding: 14px 16px 18px;
+      text-align: center;
+    }
+
+    .card-body p {
+      margin: 0;
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    /* =================== القسم 2: كيف يعمل كارتك الذكي =================== */
+    .how-card {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .how-card video {
+      width: 100%;
+      height: 420px;
+      border-radius: 14px;
+      object-fit: cover;
+    }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .how-step {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: #4b5563;
+      text-align: right;
+    }
+
+    .how-step span {
+      display: inline-block;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--main-color);
+      color: #00121e;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 6px;
+    }
+
+    /* =================== القسم 3: صور واقعية للبطاقات (سلايدر) =================== */
+    .slider-wrapper {
+      position: relative;
+      margin-top: 10px;
+    }
+
+    .mobile-slider {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 8px 4px 6px;
+      scroll-behavior: smooth;
+    }
+
+    .mobile-slider::-webkit-scrollbar {
+      height: 8px;
+    }
+    .mobile-slider::-webkit-scrollbar-thumb {
+      background: rgba(15, 23, 42, 0.12);
+      border-radius: 999px;
+    }
+
+    .slider-item {
+      min-width: 260px;
+      max-width: 280px;
+      flex: 0 0 auto;
+    }
+
+    .slider-item .media-wrapper img {
+      cursor: zoom-in;
+    }
+
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 10;
+      background: #0dca9b;
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.16);
+    }
+    .slide-btn.prev { left: -4px; }
+    .slide-btn.next { right: -4px; }
+
+    @media (max-width: 899px) {
+      .slide-btn { display: flex; }
+    }
+    @media (min-width: 900px) {
+      .mobile-slider {
+        overflow: visible;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 22px;
+      }
+      .slider-item { min-width: 0; max-width: 100%; }
+      .slide-btn { display: none; }
+    }
+
+    /* =================== Lightbox =================== */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      padding: 28px;
+    }
+    #lightbox img {
+      max-width: 96%;
+      max-height: 96%;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+    }
+    #closeLightbox {
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      font-size: 34px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* =================== تأثيرات احترافية =================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: 0.8s ease;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .media-wrapper img,
+    .media-wrapper video {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover .media-wrapper img,
+    .card:hover .media-wrapper video {
+      transform: scale(1.03);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.4);
+    }
+
+    /* =================== الفوتر =================== */
+    .main-footer {
+      text-align: center;
+      padding: 22px 10px 26px;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    /* =================== ريسبونسيف =================== */
+    @media (max-width: 640px) {
+      body { padding-top: 70px; }
+      .media-wrapper img,
+      .media-wrapper video { height: 330px; }
+      .how-card video { height: 350px; }
+    }
+
+
+    /* تنسيق القسم الثالث الجديد */
+/* تنسيق القسم الثالث - عرض أعرض وصورة كاملة */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.cards-grid .card {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
+  transition: 0.3s ease;
+}
+
+.cards-grid .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.13);
+}
+
+.cards-grid .media-wrapper.wide {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+
+.cards-grid .media-wrapper.wide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f5f5f5;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.cards-grid .media-wrapper.wide img:hover {
+  transform: scale(1.05);
+}
+
+.cards-grid .card-body {
+  padding: 14px 12px;
+  font-size: 15px;
+  color: #4b5563;
+}
+
+/* زر الطلب */
+.order-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 24px;
+  background: var(--main-color);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 999px;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.order-btn:hover {
+  background: #00c095;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 224, 172, 0.4);
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ الهيدر ============ -->
+  <header class="main-header">
+    <div class="header-right">
+      <i class="fa-solid fa-bars menu-icon" id="menuBtn"></i>
+    </div>
+
+    <div class="logo">
+      <!-- غيّر مسار الشعار هنا -->
+      <img src="loweb.png" alt="مُـخـتـلـف">
+    </div>
+
+    <div class="header-left">
+      <i class="fa-solid fa-bag-shopping cart-icon"></i>
+    </div>
+  </header>
+
+  <!-- ============ القائمة الجانبية ============ -->
+  <div class="side-menu" id="sideMenu">
+    <div class="top">
+      <h2>مُـخـتـلـف</h2>
+      <i class="fa-solid fa-xmark" id="closeBtn"></i>
+    </div>
+
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="about.html">عن مُـخـتـلـف</a>
+      <a href="features.html">المميزات</a>
+      <a href="faq.html">الأسئلة الشائعة</a>
+    </nav>
+
+    <div class="social">
+      <!-- ضع روابطك الحقيقية هنا -->
+      <a href="https://www.instagram.com/a_different1/#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/people/%D9%85%D9%8F%D9%80%D9%80%D8%AE%D9%80%D9%80%D8%AA%D9%80%D9%8
+        0%D9%84%D9%80%D9%80%D9%81-%D9%87%D9%80%D9%88%D9%8A%D9%80%D8%AA%D9%80%D9%83-%D8%A7%D9%84%D9%80%D8%B0%D9%83%D9
+        %80%D9%8A%D9%80%D8%A9/61583562325097/?rdid=8kNMh1Lr6LfU
+        MdfY&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17SvsYFmAu%2F"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://wa.me/966547856086"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@a_different_?_r=1&_t=ZS-91JP97UzArn"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </div>
+
+  <!-- ============ المحتوى الرئيسي ============ -->
+  <main>
+
+    <!-- ===== القسم 1: كيف تقدّم لك هويتك الذكية ===== -->
+    <section class="section reveal">
+      <h2 class="section-title">كيف تُقدّم لك هويتك الذكية؟</h2>
+      <p class="section-subtitle">
+        من أول لمسة… كارت مُـخـتـلـف يفتح للعالم صفحتك الذكية: بياناتك، حساباتك، وأرقام التواصل – كلها في مكان واحد أنيق وسهل.
+      </p>
+
+      <div class="products-grid">
+        <!-- فيديو تعريفي بالمنتج -->
+        <article class="card">
+          <div class="media-wrapper">
+            <!-- غيّر مسار الفيديو -->
+            <video controls poster="منتج اسود.png">
+              <source src="vid1.mp4" type="video/mp4">
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <span class="media-badge">فيديو تعريفي بالمنتج</span>
+          </div>
+          <div class="card-body">
+            <p>شاهد كيف يفتح كارتك الذكي صفحتك خلال ثوانٍ، بدون تطبيقات أو خطوات معقدة.</p>
+          </div>
+        </article>
+
+        <!-- صورة منتج 1 -->
+        <article class="card">
+          <div class="media-wrapper">
+            <img src="منتج ازرق.png" alt="بطاقة مختلفة - أزرق" class="zoom-img">
+            <span class="media-badge">تصميم الكارت الأزرق</span>
+          </div>
+          <div class="card-body">
+            <p>تصميم احترافي يناسب أصحاب الأعمال والخدمات الذين يبحثون عن حضور عصري وعملي.</p>
+          </div>
+        </article>
+
+        <!-- صورة منتج 2 -->
+        <article class="card">
+          <div class="media-wrapper">
+            <img src="منتج اسود.png" alt="بطاقة مختلفة - أسود" class="zoom-img">
+            <span class="media-badge">تصميم الكارت الأسود</span>
+          </div>
+          <div class="card-body">
+            <p>هوية أنيقة تعكس ثقة واحترافية، وتجعلك حاضرًا في ذهن من تتعامل معهم من أول لمسة.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- ===== القسم 2: كيف يعمل كارتك الذكي؟ ===== -->
+    <section class="section reveal">
+      <h2 class="section-title">كيف يعمل كارتك الذكي؟</h2>
+      <p class="section-subtitle">
+        كل ما تحتاجه هو كارت واحد… يقرب من الجوال، فيفتح صفحة تعريفية كاملة تحمل كل بياناتك وروابطك.
+      </p>
+
+      <article class="card how-card">
+        <!-- غيّر مسار الفيديو التعليمي -->
+        <video controls poster="منتج مؤسسة.png">
+          <source src="vid1.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+
+        <div class="how-steps">
+          <div class="how-step">
+            <span>1</span>
+            قرّب الكارت من الجوال – يدعم أغلب الأجهزة الحديثة التي تدعم NFC أو من خلال QR.
+          </div>
+          <div class="how-step">
+            <span>2</span>
+            تظهر صفحتك الذكية فورًا: بياناتك، حسابات التواصل، موقعك، وأي روابط مهمة.
+          </div>
+          <div class="how-step">
+            <span>3</span>
+            الشخص اللي أمامك يقدر يحفظ بياناتك بضغطة واحدة في جواله، بدون كتابة أو تصوير.
+          </div>
+          <div class="how-step">
+            <span>4</span>
+            تقدر تعدّل معلوماتك في أي وقت، والكارت يظل نفسه – التحديث يتم على صفحتك فقط.
+          </div>
+        </div>
+      </article>
+
+      <div class="section-divider"></div>
+    </section>
+
+    <!-- ===== القسم 3: صور واقعية للبطاقات ===== -->
+<!-- ===== القسم 3: صور واقعية للبطاقات ===== -->
+<section class="section reveal">
+  <h2 class="section-title">صور واقعية للبطاقات</h2>
+  <p class="section-subtitle">
+    لقطات حقيقية من بطاقات مختلفة بألوان متعددة تناسب الأفراد، الشركات، والمكاتب.
+  </p>
+
+  <div class="cards-grid">
+    <!-- بطاقة 1 -->
+    <article class="card">
+      <div class="media-wrapper wide">
+        <img src="منتج بمبي.png" alt="بطاقة بمبي" class="zoom-img">
+      </div>
+      <div class="card-body">
+        <p>تصميم أنثوي ناعم، مثالي للمصممات والمدونات.</p>
+        <a href="https://wa.me/966547856086" class="order-btn">اطلب الكارت</a>
+      </div>
+    </article>
+
+    <!-- بطاقة 2 -->
+    <article class="card">
+      <div class="media-wrapper wide">
+        <img src="منتج بيرجندي.png" alt="بطاقة بيرجندي" class="zoom-img">
+      </div>
+      <div class="card-body">
+        <p>لون بيرجندي فاخر، يعكس أناقة وثقة في المناسبات الرسمية.</p>
+        <a href="https://wa.me/966547856086" class="order-btn">اطلب الكارت</a>
+      </div>
+    </article>
+
+    <!-- بطاقة 3 -->
+    <article class="card">
+      <div class="media-wrapper wide">
+        <img src="منتج ازرق.png" alt="بطاقة أزرق" class="zoom-img">
+      </div>
+      <div class="card-body">
+        <p>أزرق هادئ، مثالي للشركات الناشئة والمستشارين.</p>
+        <a href="https://wa.me/966547856086" class="order-btn">اطلب الكارت</a>
+      </div>
+    </article>
+
+    <!-- بطاقة 4 -->
+    <article class="card">
+      <div class="media-wrapper wide">
+        <img src="منتج مؤسسة.png" alt="بطاقات للمؤسسات" class="zoom-img">
+      </div>
+      <div class="card-body">
+        <p>تصميم موحد للمؤسسات، يعكس هوية مهنية متكاملة.</p>
+        <a href="https://wa.me/966547856086" class="order-btn">اطلب الكارت</a>
+      </div>
+    </article>
+
+    <!-- بطاقة 5 -->
+    <article class="card">
+      <div class="media-wrapper wide">
+        <img src="منتج اسود.png" alt="بطاقة أسود" class="zoom-img">
+      </div>
+      <div class="card-body">
+        <p>أسود كلاسيكي، يعكس قوة وثقة لأصحاب القرار.</p>
+        <a href="https://wa.me/966547856086" class="order-btn">اطلب الكارت</a>
+      </div>
+    </article>
+  </div>
+</section>
+  </main>
+
+  <!-- ============ Lightbox لتكبير الصور ============ -->
+  <div id="lightbox" aria-hidden="true">
+    <span id="closeLightbox" aria-label="إغلاق">×</span>
+    <img id="lightboxImg" src="" alt="عرض الصورة">
+  </div>
+
+  <!-- ============ الفوتر ============ -->
+  <footer class="main-footer">
+    © 2025 مُـخـتـلـف | جميع الحقوق محفوظة
+  </footer>
+
+  <!-- ============ JavaScript ============ -->
+  <script>
+    // القائمة الجانبية
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const navLinks = document.querySelectorAll('.side-menu nav a');
+
+    menuBtn.addEventListener('click', () => {
+      sideMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      sideMenu.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sideMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+
+    // سلايدر صور البطاقات
+    const videoSlider = document.getElementById("videoSlider");
+    const vPrev = document.getElementById("videoPrev");
+    const vNext = document.getElementById("videoNext");
+
+    function scrollByWidth(slider, dir) {
+      if (!slider) return;
+      const card = slider.querySelector(".slider-item");
+      if (!card) return;
+      const step = card.getBoundingClientRect().width + 18;
+      slider.scrollBy({ left: dir * step, behavior: "smooth" });
+    }
+
+    if (vNext) vNext.addEventListener("click", () => scrollByWidth(videoSlider, +1));
+    if (vPrev) vPrev.addEventListener("click", () => scrollByWidth(videoSlider, -1));
+
+    // Lightbox
+    const zoomImgs = document.querySelectorAll(".zoom-img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const closeLightbox = document.getElementById("closeLightbox");
+
+    zoomImgs.forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = "flex";
+        lightbox.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    closeLightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+      lightbox.setAttribute("aria-hidden", "true");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = "none";
+        lightbox.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        lightbox.style.display = "none";
+        lightbox.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    // reveal animation
+    const revealEls = document.querySelectorAll('.reveal');
+
+    function handleReveal() {
+      const trigger = window.innerHeight - 100;
+      revealEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < trigger) {
+          el.classList.add('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', handleReveal);
+    window.addEventListener('load', handleReveal);
+  </script>
+</body>
+</html>
