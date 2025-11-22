@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 */
 
- 
+
   const btn = document.getElementById("backToTop");
 
   window.onscroll = function () {
@@ -93,3 +93,47 @@ document.addEventListener("DOMContentLoaded", function() {
     once: true,     // تظهر مرة واحدة فقط عند التمرير
     offset: 100     // تبدأ الحركة قبل الدخول بـ100 بكسل
   });
+
+
+
+ // عناصر الزر والشريط
+const alertBtn = document.getElementById("alertBtn");
+const discountBar = document.getElementById("discountBar");
+const hideBar = document.getElementById("hideBar");
+
+let barOpened = false;   // هل الشريط مفتوح؟
+
+// عند الضغط على زر الجرس
+alertBtn.addEventListener("click", () => {
+  discountBar.classList.add("show-discount");   // ظهور الشريط
+  alertBtn.style.opacity = "0";                 // إخفاء زر الجرس
+  alertBtn.style.pointerEvents = "none";
+  barOpened = true;
+});
+
+// عند الضغط على ×
+hideBar.addEventListener("click", () => {
+  discountBar.classList.remove("show-discount"); // إخفاء الشريط
+  alertBtn.style.opacity = "1";                  // إظهار الزر
+  alertBtn.style.pointerEvents = "auto";
+  barOpened = false;
+});
+
+// إخفاء الشريط عند النزول
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll) {
+    // المستخدم نازل ↓↓↓
+    if (barOpened) {
+      discountBar.classList.remove("show-discount");
+      alertBtn.style.opacity = "1";
+      alertBtn.style.pointerEvents = "auto";
+      barOpened = false;
+    }
+  }
+
+  lastScroll = currentScroll;
+});
