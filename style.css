@@ -1167,3 +1167,26 @@ font-size: 32px;
 .show-discount {
   top: 100px !important; /* 👈 نفس ارتفاع الهيدر */
 }
+
+/* شريط الخصم على الجوال */
+@media (max-width: 768px) {
+  .discount-bar {
+    height: 45px !important;      /* 👈 أصغر */
+    font-size: 14px !important;   /* 👈 الخط أصغر للجوال */
+    padding: 0 10px !important;
+    top: -60px;                   /* يخبيه فوق */
+  }
+
+  /* لما يظهر تحت الهيدر تمامًا */
+.show-discount {
+  top: 120px !important; /* 👈 نزّلته 20px تحت */
+}
+  }
+
+  /* زر الإغلاق على الجوال */
+  .hide-bar {
+    font-size: 22px !important;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px !important;
+  }
